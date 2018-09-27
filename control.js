@@ -33,3 +33,11 @@ document.addEventListener('keypress', function(ev) {
             break;
     }
 });
+
+document.addEventListener('click', function(ev){
+    var bc = new BroadcastChannel('control');
+    if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(ev.target.tagName)) {
+        bc.postMessage(ev.target.textContent.toLowerCase().replace(/\s+/g, '-'));
+    }
+});
+
